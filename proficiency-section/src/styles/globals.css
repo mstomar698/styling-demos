@@ -1,0 +1,446 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+  display: grid;
+  background: #000;
+  place-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: peru;
+  padding: 1rem;
+  height: 50vh;
+  width: 100%;
+  border: rgb(11, 245, 26) solid 1px;
+}
+.container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: rgb(11, 38, 245) solid 1px;
+  height: 80%;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.blobs {
+  color: rgb(6, 255, 27);
+}
+@keyframes blob-left-top-anim {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+  50% {
+    transform: scale(1) translate(0, 0);
+  }
+  75% {
+    transform: scale(0.5) translate(50%, 50%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+@keyframes blob-right-top-anim {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  35% {
+    transform: scale(0.5) translate(0, -50%);
+  }
+  50% {
+    transform: scale(1) translate(0, 0);
+  }
+  85% {
+    transform: scale(0.5) translate(0, 50%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+@keyframes blob-left-bottom-anim {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(0.5) translate(-50%, 0);
+  }
+  50% {
+    transform: scale(1) translate(0, 0);
+  }
+  75% {
+    transform: scale(0.5) translate(50%, 0);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+@keyframes blob-right-bottom-anim {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(0.5) translate(50%, -50%);
+  }
+  50% {
+    transform: scale(1) translate(0, 0);
+  }
+  75% {
+    transform: scale(0.5) translate(-50%, 50%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+.blob {
+  position: absolute;
+  background: red;
+  width: 30vmin;
+  height: 30vmin;
+  text-align: center;
+  font-size: calc(0.5em + 1vw);
+  border-radius: 100%;
+  animation: blob-left-top-anim cubic-bezier(0.77, 0, 0.175, 1) 3s infinite;
+}
+.blob:nth-child(2) {
+  animation-name: blob-right-top-anim;
+}
+.blob:nth-child(3) {
+  animation-name: blob-left-bottom-anim;
+  animation-delay: 0.2s;
+}
+.blob:nth-child(4) {
+  animation-name: blob-right-bottom-anim;
+  animation-delay: 0.4s;
+}
+.blob:nth-child(5) {
+  animation: none;
+  position: relative;
+}
+.blob:nth-child(5):before {
+  content: 'some Content';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+}
+
+@media screen and (max-width: 768px) {
+  .blob {
+    width: 15vmin;
+    height: 15vmin;
+    font-size: calc(0.5em + 1vw);
+  }
+  .container {
+    margin: 2rem;
+    height: 100%;
+    width: 100vmin;
+  }
+  .container > div {
+    height: 30%;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .blob {
+    width: 15vmin;
+    height: 15vmin;
+    font-size: calc(0.5em + 1vw);
+  }
+  .container {
+    margin: 2rem;
+    height: 100%;
+    width: 100vmin;
+  }
+  .container > div {
+    height: 30%;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}
+
+/* water */
+/* #box {
+  margin: 100px auto;
+  width: 200px;
+  height: 100px;
+  border-radius: 20px;
+  border: 5px solid #eb0d0d;
+  background-image: -webkit-linear-gradient(45deg, 0%, 100%);
+  opacity: 0.95;
+  box-shadow: 0px 2px 0px #ff5;
+} */
+/* #tile01 {
+  margin: auto;
+  color: aqua;
+  width: 200px;
+  height: 100px;
+} */
+/* #mask {
+  position: fixed;
+  top: 5px;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+
+  font-size: 60px;
+  font-weight: 700;
+  font-family: 'Lobster Two', cursive;
+  text-align: center;
+  line-height: 90px;
+  text-shadow: 0px 2px 2px rgba(245, 3, 3, 0.2),
+    0px 2px 0px rgba(255, 255, 255, 0.3);
+
+  background-image: -webkit-radial-gradient(
+    center 10px,
+    80px 100px,
+    #111111 50%,
+    #0099ff 51%
+  );
+
+  background-size: 40px 110px;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: wave-animation;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+@keyframes wave-animation {
+  0% {
+    background-position: 200px 10px;
+  }
+  50% {
+    background-position: 100px -20px;
+  }
+  70% {
+    background-position: 0px -40px;
+  }
+} */
+
+/* Add below tag to add circle element */
+/* <figure className="circle"></figure> */
+/* .circle {
+  background: #000;
+  border-radius: 50%;
+  height: 60vmin;
+  width: 60vmin;
+  background: radial-gradient(circle at 100px 100px, #5cabff, #000);
+} */
+
+/* Add below tag to add Ball element */
+/* <section class="stage">
+          <figure class="ball">
+            <span class="shadow"></span>
+            <span class="eight"></span>
+            <span class="iris"></span>
+          </figure>
+        </section> */
+/* .stage {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  margin: 20px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+.ball .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  transform: rotateX(90deg) translateZ(-150px);
+  z-index: -1;
+}
+.ball {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #323232,
+    #0a0a0a 80%,
+    #000000 100%
+  );
+}
+.ball:before {
+  content: '';
+  position: absolute;
+  background: radial-gradient(
+    circle at 50% 120%,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  bottom: 2.5%;
+  left: 5%;
+  opacity: 0.6;
+  height: 100%;
+  width: 90%;
+  filter: blur(5px);
+  z-index: 2;
+}
+.ball:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8) 14%,
+    rgba(255, 255, 255, 0) 24%
+  );
+  transform: translateX(-80px) translateY(-90px) skewX(-20deg);
+  filter: blur(10px);
+}
+.ball .eight {
+  width: 110px;
+  height: 110px;
+  margin: 30%;
+  background: white;
+  border-radius: 50%;
+  transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
+  position: absolute;
+}
+.ball .eight:before {
+  content: '8';
+  display: block;
+  position: absolute;
+  text-align: center;
+  height: 80px;
+  width: 100px;
+  left: 50px;
+  margin-left: -40px;
+  top: 44px;
+  margin-top: -40px;
+  color: black;
+  font-family: Arial;
+  font-size: 90px;
+  line-height: 104px;
+}
+.iris {
+  width: 40%;
+  height: 40%;
+  margin: 30%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #208ab4 0%,
+    #6fbfff 30%,
+    #4381b2 100%
+  );
+  transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
+  position: absolute;
+  animation: move-eye-skew 5s ease-out infinite;
+}
+.iris:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 37.5%;
+  height: 37.5%;
+  border-radius: 50%;
+  top: 31.25%;
+  left: 31.25%;
+  background: black;
+}
+.iris:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 31.25%;
+  height: 31.25%;
+  border-radius: 50%;
+  top: 18.75%;
+  left: 18.75%;
+  background: rgba(255, 255, 255, 0.2);
+}
+.ball.bubble:before {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+  height: 80%;
+  width: 40%;
+  background: radial-gradient(
+    circle at 130% 130%,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0) 46%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.8) 58%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg)
+    rotateX(10deg);
+  transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
+}
+.ball.bubble:after {
+  display: block;
+  background: radial-gradient(
+    circle at 50% 80%,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 74%,
+    white 80%,
+    white 84%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+@keyframes move-eye-skew {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(-68px) translateY(30px) skewX(15deg) skewY(-10deg)
+      scale(0.95);
+  }
+  25%,
+  44% {
+    transform: none;
+  }
+  50%,
+  60% {
+    transform: translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg)
+      scaleX(0.95);
+  }
+  66%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes bubble-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleY(0.95) scaleX(1.05);
+  }
+  48% {
+    transform: scaleY(1.1) scaleX(0.9);
+  }
+  68% {
+    transform: scaleY(0.98) scaleX(1.02);
+  }
+  80% {
+    transform: scaleY(1.02) scaleX(0.98);
+  }
+  97%,
+  100% {
+    transform: scale(1);
+  }
+} */
