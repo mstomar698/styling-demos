@@ -1,0 +1,163 @@
+html {
+  background: #000;
+}
+
+.prof_cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 40vmin;
+  border: #029502 solid 3px;
+  border-radius: 20px 20px 20px 20px;
+}
+.prof {
+  align-items: center;
+  border: #7a0b0b solid 3px;
+  border-radius: 20px 20px 20px 20px;
+  width: 25vmin;
+  height: 25vmin;
+  overflow: hidden;
+}
+.topic {
+  color: rgba(255, 0, 0, 0.5);
+  text-shadow: 0 0 60px #f59d97;
+  padding-top: 2px;
+  text-transform: uppercase;
+  font-size: calc(0.5em + 2vw);
+  padding-bottom: 2px;
+  text-align: center;
+}
+.sphere_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 6px 0px 6px 0px;
+}
+.sphere {
+  position: relative;
+  border-radius: 50%;
+  width: 16vmin;
+  height: 16vmin;
+  border: 3px solid #e1fe07;
+  box-shadow: 0 0 25px #fefa6f;
+  transition: all 1s ease;
+}
+.sphere_inner {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 50%;
+  width: 16vmin;
+  height: 16vmin;
+  transition: all 1s ease;
+}
+.water {
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  width: 200%;
+  height: 200%;
+  transition: all 1s ease;
+  left: -50%;
+  background: rgba(110, 248, 110, 0.5);
+  border-radius: 40%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: spin;
+  animation-name: spin;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  box-shadow: 0 0 15px #03bc03;
+}
+.glare {
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  z-index: 5;
+  width: 200%;
+  height: 200%;
+  transform: rotate(45deg);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: all 1s ease;
+}
+.percent {
+  position: absolute;
+  left: 28%;
+  top: 35%;
+  color: #80ff01;
+  text-shadow: 0 0 60px #035c14;
+  font-size: calc(0.5em + 2vw);
+}
+
+@media screen and (max-width: 600px) {
+  .prof {
+    justify-content: space-between;
+    height: 30vmin;
+  }
+  .sphere_container {
+    margin: 0;
+  }
+  .topic {
+    margin-bottom: 10px;
+    font-size: calc(0.5em + 1.5vw);
+  }
+  .percent {
+    font-size: calc(0.5em + 2.5vw);
+  }
+}
+
+.prof:nth-child(2) .percent {
+  color: #ff0202;
+}
+.prof:nth-child(2) .sphere_container .sphere .water {
+  top: 50%;
+  background: rgba(237, 59, 59, 0.5);
+  box-shadow: 0 0 15px #f80c0c;
+}
+.prof:nth-child(3) .percent {
+  color: #ff0202;
+}
+.prof:nth-child(3) .sphere_container .sphere .water {
+  top: 40%;
+  background: rgba(248, 153, 52, 0.5);
+  box-shadow: 0 0 15px #f8820c;
+}
+.prof:nth-child(4) .percent {
+  color: #fc0202;
+}
+.prof:nth-child(4) .sphere_container .sphere .water {
+  top: 80%;
+  background: rgba(250, 3, 3, 0.5);
+  box-shadow: 0 0 15px #f80c0c;
+}
+.prof:nth-child(5) .percent {
+  color: #0206fc;
+  left: 18%;
+}
+.prof:nth-child(5) .sphere_container .sphere .water {
+  background: rgba(186, 233, 248, 0.5);
+  box-shadow: 0 0 15px #0674f1;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
